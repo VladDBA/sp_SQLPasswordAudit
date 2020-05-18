@@ -1,9 +1,5 @@
 # sp_SQLPasswordAudit
 <a name="header1"></a>
-[![licence badge]][licence]
-[![stars badge]][stars]
-[![forks badge]][forks]
-[![issues badge]][issues]
 
 ## Navigation
 - [About](#About)
@@ -15,8 +11,6 @@
 - [Setting up](#Setting-up)
 
 - [Usage examples](#Usage-examples)
-
-
 
 
 ## About
