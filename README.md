@@ -25,6 +25,7 @@ weak passwords.
 * Uses [password lists](/PasswordLists) from known breaches and campaigns ([rockyou](https://techcrunch.com/2009/12/14/rockyou-hack-security-myspace-facebook-passwords/), [nansh0u](https://www.guardicore.com/2019/05/nansh0u-campaign-hackers-arsenal-grows-stronger/)) commonly used by hackers for both brute forcing and password spraying attacks.
 * Since the stored procedure relies SQL Server's built-in [PWDCOMPARE](https://docs.microsoft.com/en-us/sql/t-sql/functions/pwdcompare-transact-sql?view=sql-server-ver15), it is able to check a large number of passwords against a login
  without the risk of locking it out.
+* The password lists in .sql format have been cleaned-up and are all set to be inserted in the Passwords table via a simple sqlcmd command.
 * Experimental: sp_SQLPasswordAudit is also able to auto-generate possible passwords based on information already
  available on the instance like:
   - database names and creation dates
