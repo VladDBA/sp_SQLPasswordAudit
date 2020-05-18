@@ -63,7 +63,8 @@ sqlcmd -S HostName\Instance -E -d TargetDatabase -x -i PathToList\ListScript.sql
 ```
 sqlcmd -S HostName\Instance -U LoginName -P LoginPassword -d TargetDatabase -x -i PathToList\ListScript.sql -o PathToOutputFile\insertout.txt
 ```
->*Note1: while password lists under 10MB can be inserted in the table using SSMS, larger lists, such as rockyou can only be loaded using sqlcmd via Command Prompt
+>*Note1: while password lists under 10MB can be inserted in the table using SSMS, larger lists, such as rockyou can only be loaded using sqlcmd via Command Prompt. Aso, password insert scripts larger than 10MB will be zipped.
+
 >*Note2: the -x option is required to tell sqlcmd to not consider strings containing the dollar sign ($) as scripting variables and not try to expand them. Not using the -x option will result in the insert failing when the first string from a password list containing a $ is encountered.
 
 [*Back to top*](#header1)
