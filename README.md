@@ -83,7 +83,7 @@ sqlcmd -S HostName\Instance -U LoginName -P LoginPassword -d TargetDatabase -x -
 [*Back to top*](#header1)
 
 ## Usage examples
-```
+```SQL
 EXECUTE sp_SQLPasswordAudit;
 ```
 Will run the stored procedure with it's default settings:
@@ -93,7 +93,7 @@ Will run the stored procedure with it's default settings:
   * Will output the results to grid without storing them in a permanent table
   * Will not use instance-related information in generating passwords
   * Won't generate password candidates based on a custom term
-```
+```SQL
 EXECUTE sp_SQLPasswordAudit @SourceLists = 'nansh0u', 
                             @ExcludeDisabled = 0, 
                             @ResultsToTable = 1,
@@ -104,7 +104,7 @@ Will have the following behaviour:
  * It will not exclude logins that are not currently enabled
  * Saves the results to a permanent table called SQLAuditResults 
  * Generates possible passwords based on the MyCompany string and checks the hashes against them as well
-```
+```SQL
 EXECUTE sp_SQLPasswordAudit @SourceLists      = 'rockyou, nansh0u', 
                             @ExcludeDisabled  = 0,
                             @IgnorePolicy     = 1, 
@@ -119,7 +119,7 @@ Will have the following behaviour:
  * Saves the results to a permanent table called SQLAuditResults 
  * Checks the hashes against auto generated instance-specific passwords
  * Generates possible passwords based on the MyCompany string and checks the hashes against them as well
-```
+```SQL
 EXECUTE sp_SQLPasswordAudit @SourceLists      = 'nolist',
                             @ResultsToTable   = 1,
                             @UseInstanceInfo  = 1,
