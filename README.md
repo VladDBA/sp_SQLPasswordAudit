@@ -94,10 +94,10 @@ Will run the stored procedure with it's default settings:
   * Will not use instance-related information in generating passwords
   * Won't generate password candidates based on a custom term
 ```SQL
-EXECUTE sp_SQLPasswordAudit @SourceLists = 'nansh0u', 
+EXECUTE sp_SQLPasswordAudit @SourceLists     = 'nansh0u', 
                             @ExcludeDisabled = 0, 
-                            @ResultsToTable = 1,
-                            @CustomTerm = 'MyCompany';
+                            @ResultsToTable  = 1,
+                            @CustomTerm      = 'MyCompany';
 ```  
 Will have the following behaviour:
  * It will only check against the passwords from the nansh0u list
