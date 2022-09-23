@@ -44,7 +44,7 @@ weak passwords.
 
 ## Limitations
  * sp_SQLPasswordAudit has been built for and tested on SQL Server 2012 through 2019, there is no guarantee that it will work as expected on older versions of SQL Server.
- * When running on an instance with many databases and logins with the @UseInstanceInfo parameter set to 1, the quasi-temporary table used to store the auto-generated passwords could grwo to 1-2GB in size, it is recommended that you pre-grow in advance the database that hosts the stored procedure.
+ * When running on an instance with many databases and logins with the @UseInstanceInfo parameter set to 1, the quasi-temporary table used to store the auto-generated passwords could grow to 1-2GB in size, it is recommended that you pre-grow in advance the database that hosts the stored procedure.
  * Running sp_SQLPasswordAudit against large password lists such as [rockyou](/PasswordLists/rockyou.zip) will cause [PREEMPTIVE_OS_CRYPTOPS waits](https://www.sqlskills.com/help/waits/preemptive_os_cryptops/) that can be picked by [Brent Ozar](https://www.brentozar.com/)'s [SQL Server First Responder Kit](https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit) (sp_BlitzWho and sp_BlitzCache in particular) and/or by various monitoring tools that capture high waits.
  
 [*Back to top*](#header1)
