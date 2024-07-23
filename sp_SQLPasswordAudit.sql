@@ -5,13 +5,13 @@ GO
 
 ALTER PROCEDURE [dbo].[sp_SQLPasswordAudit]
 (
-	@Help			BIT				= 0,
+	@Help				BIT				= 0,
 	@ExcludeDisabled	BIT				= 1,
 	@IgnorePolicy		BIT				= 0,
 	@ResultsToTable		BIT				= 0,
-	@SourceLists		NVARCHAR(500)			= N'ALL',
+	@SourceLists		NVARCHAR(500)	= N'ALL',
 	@UseInstanceInfo	BIT				= 0,
-	@CustomTerm		NVARCHAR(32)			= N''
+	@CustomTerm		NVARCHAR(32)		= N''
 )
 AS
 SET NOCOUNT ON;
@@ -86,7 +86,7 @@ PRINT '
 
 	MIT License
 
-	Copyright (c) 2020 Vlad Drumea
+	Copyright (c) 2024 Vlad Drumea
 	
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
@@ -850,12 +850,12 @@ IF EXISTS(SELECT * FROM sys.objects
 	END;
 IF (@UseInstanceInfo=1 OR @CustomTerm <> N'')
 BEGIN
-	IF EXISTS(SELECT [OB].* 
+	IF EXISTS(SELECT [OB].[name], SUM([PT].[rows])
 				FROM sys.objects AS [OB]
 				INNER JOIN sys.partitions [PT]
 				ON [OB].[object_id] = [PT].[object_id]
 					WHERE [OB].[object_id] = OBJECT_ID(N'[dbo].[Passwords]') AND [type] in (N'U')
-						AND [PT].[rows] = 0)
+					GROUP BY [OB].[name] HAVING(SUM([PT].[rows])= 0))
 	BEGIN
 	DROP TABLE [dbo].[Passwords];
 	END;
